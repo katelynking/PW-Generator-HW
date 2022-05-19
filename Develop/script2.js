@@ -1,17 +1,25 @@
 
 function passwordGenerator(pw) {
   var passLength = window.prompt("How many characters would you like the password to be?", "Enter number"); {
+    numPassLength = parseInt(passLength);
+
     if (passLength === null) {
       return "Click button to generate password";
     }
-    else if (passLength < 8 || passLength > 129) {
-      while (passLength < 8 || passLength > 129) {
-        window.alert("Password length must be between 8 and 129 characters");
-        passLength = window.prompt("How many characters would you like the password to be?", "Enter number");
-      }
+
+    if (isNaN(passLength)) {
+      window.alert("Please enter a number");
+      return "Click button to generate password";
     }
-    else {
-      console.log(passLength);
+
+    if (numPassLength < 8 || numPassLength > 129) {
+      while (numPassLength < 8 || numPassLength > 129) {
+        window.alert("Password length must be between 8 and 129 characters");
+        return "Click button to generate password";
+      }
+
+    } else {
+      console.log(numPassLength);
     }
   }
 
@@ -33,18 +41,19 @@ function passwordGenerator(pw) {
     }
   } while (!specCharConfirm && !numCharConfirm && !uppCaseConfirm & !lowCaseConfirm)
 
-  window.alert("PASSWORD PARAMETERS \nCharacter Length: " + passLength +
+  //PASSWORD PARAMETERS
+  window.alert("PASSWORD PARAMETERS \nCharacter Length: " + numPassLength +
     "\nSpecial characters included: " + specCharConfirm +
     "\nNumeric characters included: " + numCharConfirm +
     "\nUppercase letters included: " + uppCaseConfirm +
     "\nLowercase letters included: " + lowCaseConfirm
   );
 
+  // VARIABLES
   var password = "";
   var character = "";
 
-
-  while (password.length < passLength) {
+  while (password.length < numPassLength) {
 
     randomLow = Math.floor(lowCaseChar.length * Math.random() * Math.random());
     randomUpp = Math.floor(uppCaseChar.length * Math.random() * Math.random());
@@ -65,12 +74,15 @@ function passwordGenerator(pw) {
 
     if (lowCaseConfirm) {
       character += lowCaseChar.charAt(randomLow);
-    } 
+    }
     password = character;
-  } 
-password = password.split('').sort(function () {return 0.5 - Math.random() }).join('');
-return password.substring(0, pw);
-    
+
+  }
+  password = password.split('').sort(function () { return 0.5 - Math.random() }).join('');
+  password = password.slice(0,[numPassLength]);
+  
+  return password.substring(0, pw);
+
 }
 
 // Assignment Code
@@ -86,5 +98,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-
