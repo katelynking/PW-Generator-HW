@@ -24,7 +24,7 @@ function passwordGenerator(pw) {
   }
 
   do {
-    var specChar = '!@#$%^&*()<>?;:';
+    var specChar = ' !"#$%&()*+,-./:;<=>?@[\]^_`{|}~';
     var specCharConfirm = window.confirm("Would you like to include special characters?");
 
     var numChar = '0123456789';
