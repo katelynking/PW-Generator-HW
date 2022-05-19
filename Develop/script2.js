@@ -3,7 +3,7 @@ function passwordGenerator(pw) {
   var passLength = window.prompt("How many characters would you like the password to be?", "Enter number"); {
     numPassLength = parseInt(passLength);
 
-    if (passLength === null) {
+    if (!passLength) {
       return "Click button to generate password";
     }
 
@@ -42,12 +42,16 @@ function passwordGenerator(pw) {
   } while (!specCharConfirm && !numCharConfirm && !uppCaseConfirm & !lowCaseConfirm)
 
   //PASSWORD PARAMETERS
-  window.alert("PASSWORD PARAMETERS \nCharacter Length: " + numPassLength +
+  var passParameters = window.confirm("PASSWORD PARAMETERS \nCharacter Length: " + numPassLength +
     "\nSpecial characters included: " + specCharConfirm +
     "\nNumeric characters included: " + numCharConfirm +
     "\nUppercase letters included: " + uppCaseConfirm +
     "\nLowercase letters included: " + lowCaseConfirm
-  );
+  ); {
+    if (!passParameters) {
+      return "Click button to generate password";
+  }
+}
 
   // VARIABLES
   var password = "";
