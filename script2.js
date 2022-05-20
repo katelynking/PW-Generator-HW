@@ -12,9 +12,9 @@ function passwordGenerator(pw) {
       return "Click button to generate password";
     }
 
-    if (numPassLength < 8 || numPassLength > 129) {
-      while (numPassLength < 8 || numPassLength > 129) {
-        window.alert("Password length must be between 8 and 129 characters");
+    if (numPassLength < 8 || numPassLength > 128) {
+      while (numPassLength < 8 || numPassLength > 128) {
+        window.alert("Password length must be between 8 and 128 characters");
         return "Click button to generate password";
       }
 
